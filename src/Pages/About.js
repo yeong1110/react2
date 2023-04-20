@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
-const about = () => {
+const About = () => {
     return (
         <div>
             회사정보
@@ -12,4 +12,4 @@ const about = () => {
     );
 };
 
-export default about;
+export default About;

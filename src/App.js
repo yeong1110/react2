@@ -6,8 +6,8 @@ import './App.css';
 import img_01 from './banner.webp'
 import data from './data.js'
 import List from './Component/List.js'
-import Detail from './Detail.js'
-import About from './about.js'
+import Detail from './Pages/Detail.js'
+import About from './Pages/About.js'
 
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={()=>{navigate('/')}}>Home</Nav.Link>
-            <Nav.Link onClick={()=>{navigate('/detail')}}>Features</Nav.Link>
+            <Nav.Link onClick={()=>{navigate('/detail/0')}}>Features</Nav.Link>
             <Nav.Link onClick={()=>{navigate(-1)}}>이전</Nav.Link>
             <Nav.Link onClick={()=>{navigate('/about')}}>about</Nav.Link>
             {/* <Nav.Link onClick={()=>{navigate('/about/member')}}>member</Nav.Link>
@@ -49,14 +49,14 @@ function App() {
         </div>
         </>
       } />
-      <Route path='/detail' element={
-        <Detail></Detail>
-      }></Route>
       <Route path='*' element={<div>404Error</div>}/>
       <Route path='/about' element={<About></About>}>
         <Route path='member' element={ <div>멤버들</div> }/>
         <Route path='location' element={ <div>회사위치</div> }/>
       </Route>
+        <Route path='/detail/:id' element={<Detail items={items}></Detail>}></Route>
+        {/* url parameter */}
+        {/* 유저가 뭐라는 간에 디테일 컴포넌트를 열어라 */}
       </Routes>
 
 
