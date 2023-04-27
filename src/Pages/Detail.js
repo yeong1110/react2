@@ -32,19 +32,19 @@ const Detail = (props) => {
                 alerts === true ? <div id='pop' className='alert alert-warning'>3초후 사라짐</div> : null
             }
             
-            <div className='row'>
-                <div className='col-md-6'>
-                    <img src={process.env.PUBLIC_URL + '/img/img0'+props.items[id].id+'.webp'} alt="" />
+            <div className='row prd_wrap'>
+                <div className='col-md-6 prd_img_detail'>
+                    <img src={process.env.PUBLIC_URL + '/img/keyboard_00_0'+props.items[id].id+'.jpg'} alt="" />
                 </div>
-                <div className='col-md-6'>
+                <div className='col-md-6 prd_info_detail'>
                     <h4 className='pt-5'>{props.items[id].title}</h4>
-                    <p>{props.items[id].content}</p>
-                    <p>{props.items[id].price}원</p>
-                    <p>수량 <input type="text" onChange={(e)=>{
+                    <p className='pt-3'>{props.items[id].content}</p>
+                    <p className='pt-3'>{props.items[id].price}원</p>
+                    <p className='pt-3'>수량 <input type="text" onChange={(e)=>{
                         setNum(e.target.value)
                         
                     }}/></p>
-                    <button className='btn btn-primary'>주문하기</button>
+                    <button className='btn btn-danger mt-3'>주문하기</button>
                 </div>
             </div>
         </div>

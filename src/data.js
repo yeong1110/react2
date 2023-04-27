@@ -1,23 +1,49 @@
 let data = [
     {
       id : 0,
-      title : "item01",
-      content : "아이템1",
-      price : 120000
+      title : "레오폴드 FC900RBT PD",
+      content : "화이트 민트",
+      price : 178000
     },
   
     {
       id : 1,
-      title : "item02",
-      content : "아이템2",
-      price : 110000
+      title : "레오폴드 FC980MBT PD",
+      content : "애쉬 옐로우",
+      price : 182500
     },
   
     {
       id : 2,
-      title : "item03",
-      content : "아이템3",
-      price : 130000
-    }
+      title : "레오폴드 FC900RBT PD",
+      content : "코랄 블루",
+      price : 178000
+    },
+    {
+      id : 3,
+      title : "레오폴드 FC900RBT PD",
+      content : "스웨디시 화이트",
+      price : 178000
+    },
+    // {
+    //   id : 4,
+    //   title : "레오폴드 FC900RBT PD",
+    //   content : "밀크 터쿼이즈",
+    //   price : 178000
+    // },
+    
+    // {
+    //   id : 5,
+    //   title : "레오폴드 FC900RBT PD",
+    //   content : "라이트 핑크",
+    //   price : 178000
+    // },
+        // {
+    //   id : 6,
+    //   title : "레오폴드 FC750RBT PD",
+    //   content : "화이트 블루스타",
+    //   price : 178000
+    // },
+    
   ];
   export default data;

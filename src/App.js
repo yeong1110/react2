@@ -4,7 +4,7 @@ import {Navbar, Container, Nav, Form} from 'react-bootstrap';
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'; 
 import styled from "styled-components";
 import './App.css';
-import img_01 from './banner.webp'
+import img_01 from './MainBanner_2.jpg'
 import data from './data.js'
 import List from './Component/List.js'
 import Detail from './Pages/Detail.js'
@@ -23,20 +23,20 @@ function App() {
             <Navbar bg="dark" variant="dark">
 
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Navbar.Brand onClick={()=>{navigate('/')}}>Leopold</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link onClick={()=>{navigate('/')}}>Home</Nav.Link>
-            <Nav.Link onClick={()=>{navigate('/detail/0')}}>Features</Nav.Link>
-            <Nav.Link onClick={()=>{navigate(-1)}}>이전</Nav.Link>
             <Nav.Link onClick={()=>{navigate('/about')}}>about</Nav.Link>
+            <Nav.Link onClick={()=>{navigate('/detail/0')}}>Keyboard</Nav.Link>
+            {/* <Nav.Link onClick={()=>{navigate(-1)}}>이전</Nav.Link> */}
+            <Nav.Link >custom</Nav.Link>
             {/* <Nav.Link onClick={()=>{navigate('/about/member')}}>member</Nav.Link>
             <Nav.Link onClick={()=>{navigate('/about/location')}}>location</Nav.Link> */}
           </Nav>
         </Container>
       </Navbar>
 
-      <Link to='/'>홈</Link>
-      <Link to='/detail'>상세페이지</Link>
+      {/* <Link to='/'>홈</Link>
+      <Link to='/detail'>상세페이지</Link> */}
 
       <Routes>
         <Route path='/' element={
@@ -55,6 +55,7 @@ function App() {
         </div>
         {
           count <1 ?  
+          
           <button onClick={()=>{
             count = count +1;
             axios.get('https://6c3fac62-d531-4787-a6d9-e01d76badde1.mock.pstmn.io/productList')
