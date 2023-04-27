@@ -4,7 +4,7 @@ let data = [
       title : "레오폴드 FC900RBT PD1",
       content : "화이트 민트",
       price : 178000,
-      url: ""
+      url: "/img/keyboard_00_00.jpg"
     },
   
     {
@@ -12,7 +12,7 @@ let data = [
       title : "레오폴드 FC980MBT PD",
       content : "애쉬 옐로우",
       price : 182500,
-      url: ""
+      url: "/img/keyboard_00_01.jpg"
     },
   
     {
@@ -20,14 +20,14 @@ let data = [
       title : "레오폴드 FC900RBT PD",
       content : "코랄 블루",
       price : 178000,
-      url: ""
+      url: "/img/keyboard_00_02.jpg"
     },
     {
       id : 3,
       title : "레오폴드 FC900RBT PD",
       content : "스웨디시 화이트",
       price : 178000,
-      url: ""
+      url: "/img/keyboard_00_03.jpg"
     },
     // {
     //   id : 4,

@@ -19,8 +19,8 @@ function App() {
   let navigate = useNavigate();
 
   useEffect(()=>{
-    // axios.get('https://619ceac5-b8b1-404f-8539-1f9f158471ee.mock.pstmn.io/testApi')
-    axios.get('http://localhost:3002/post')
+    axios.get('https://b71c09bc-5252-4df2-8125-4795cbeaf7d8.mock.pstmn.iogit/list')
+    // axios.get('http://localhost:3002/post')
     .then((result)=>{
       // console.log(result.data)
       // let copyItems = [...items, ...result.data]
