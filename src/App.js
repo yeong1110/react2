@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {Navbar, Container, Nav, Form} from 'react-bootstrap';
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'; 
 import styled from "styled-components";
@@ -17,6 +17,19 @@ let count = 0;
 function App() {
   let [items, setItems] = useState(data);
   let navigate = useNavigate();
+
+  useEffect(()=>{
+    // axios.get('https://619ceac5-b8b1-404f-8539-1f9f158471ee.mock.pstmn.io/testApi')
+    axios.get('http://localhost:3002/post')
+    .then((result)=>{
+      // console.log(result.data)
+      // let copyItems = [...items, ...result.data]
+      // setItems(copyItems)
+      const product = result.data
+      setItems(product)
+    }).catch(()=>{console.log("통신 실패")})
+  }, [])
+  
   return (
     <div className="App">
 
@@ -58,7 +71,7 @@ function App() {
           
           <button onClick={()=>{
             count = count +1;
-            axios.get('https://6c3fac62-d531-4787-a6d9-e01d76badde1.mock.pstmn.io/productList')
+            axios.get('https://619ceac5-b8b1-404f-8539-1f9f158471ee.mock.pstmn.io/testApi')
             .then((result)=>{
               // console.log(result.data)
               let copyItems = [...items, ...result.data]
