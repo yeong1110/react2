@@ -6,7 +6,7 @@ const List = (props) => {
 
     return (
         
-        <div className="col-md-4" onClick={()=>{navigate('/detail/'+props.i)}}>
+        <div className="col-md-3" onClick={()=>{navigate('/detail/'+props.i)}}>
             <img className='item-img' src={process.env.PUBLIC_URL + props.items.url} alt=''/>
             <h4>{props.items.title}</h4>
             <p>{props.items.content}</p>

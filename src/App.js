@@ -1,14 +1,18 @@
 
 import { useState, useEffect } from 'react';
 import {Navbar, Container, Nav, Form} from 'react-bootstrap';
+import Carousel from 'react-bootstrap/Carousel';
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'; 
 import styled from "styled-components";
 import './App.css';
-import img_01 from './MainBanner_2.jpg'
-import data from './data.js'
-import List from './Component/List.js'
-import Detail from './Pages/Detail.js'
-import About from './Pages/About.js'
+import img_01 from './MainBanner_2.jpg';
+import img_02 from './MainBanner_3.jpg';
+import img_03 from './MainBanner_4.jpg';
+import img_04 from './MainBanner_5.jpg';
+import data from './data.js';
+import List from './Component/List.js';
+import Detail from './Pages/Detail.js';
+import About from './Pages/About.js';
 import axios from 'axios';
 
 
@@ -18,17 +22,14 @@ function App() {
   let [items, setItems] = useState(data);
   let navigate = useNavigate();
 
-  useEffect(()=>{
-    axios.get('https://b71c09bc-5252-4df2-8125-4795cbeaf7d8.mock.pstmn.iogit/list')
-    // axios.get('http://localhost:3002/post')
-    .then((result)=>{
-      // console.log(result.data)
-      // let copyItems = [...items, ...result.data]
-      // setItems(copyItems)
-      const product = result.data
-      setItems(product)
-    }).catch(()=>{console.log("통신 실패")})
-  }, [])
+  // axios.get('http://localhost:3002/post')
+  // useEffect(()=>{
+  //   axios.get('https://b71c09bc-5252-4df2-8125-4795cbeaf7d8.mock.pstmn.io/list')
+  //   .then((result)=>{
+  //     const product = result.data
+  //     setItems(product)
+  //   }).catch(()=>{console.log("통신 실패")})
+  // }, [])
   
   return (
     <div className="App">
@@ -54,7 +55,48 @@ function App() {
       <Routes>
         <Route path='/' element={
         <>
-        <div className='main_banner' style={{backgroundImage:'url('+img_01+')'}}></div>
+        {/* <div className='main_banner' style={{backgroundImage:'url('+img_01+')'}}></div> */}
+        <Carousel id="MainBanner">
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src= {img_01}
+          alt="First slide"
+        />
+        <Carousel.Caption>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={img_02}
+          alt="Second slide"
+        />
+
+        <Carousel.Caption>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={img_03}
+          alt="Third slide"
+        />
+
+        <Carousel.Caption>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={img_04}
+          alt="Third slide"
+        />
+
+        <Carousel.Caption>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
         <div className="container">
           <div className="row">
             {

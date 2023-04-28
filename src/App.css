@@ -58,3 +58,36 @@
 .navbar-brand{
   cursor: pointer;
 }
+
+.carousel{
+  height: 500px;
+}
+
+#MainBanner .carousel-indicators button{
+  position: relative;
+  width: 60px;
+  height: 5px;
+}
+
+#MainBanner .carousel-indicators button::before{
+  content: "";
+  display: block;
+  width: 0;
+  overflow: hidden;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #ff6666;
+  transition: 0.36s linear;
+}
+
+#MainBanner .carousel-indicators .active::before{
+  animation: w100 4.8s 0s linear forwards;
+  /* width: 100%; */
+}
+
+@keyframes w100 {
+  100%{width: 100%;}
+}
+
