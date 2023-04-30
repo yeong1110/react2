@@ -29,25 +29,28 @@ let data = [
       price : 178000,
       url: "/img/keyboard_00_03.jpg"
     },
-    // {
-    //   id : 4,
-    //   title : "레오폴드 FC900RBT PD",
-    //   content : "밀크 터쿼이즈",
-    //   price : 178000
-    // },
+    {
+      id : 4,
+      title : "레오폴드 FC900RBT PD",
+      content : "밀크 터쿼이즈",
+      price : 178000,
+      url: "/img/keyboard_00_04.jpg"
+    },
     
-    // {
-    //   id : 5,
-    //   title : "레오폴드 FC900RBT PD",
-    //   content : "라이트 핑크",
-    //   price : 178000
-    // },
-        // {
-    //   id : 6,
-    //   title : "레오폴드 FC750RBT PD",
-    //   content : "화이트 블루스타",
-    //   price : 178000
-    // },
+    {
+      id : 5,
+      title : "레오폴드 FC900RBT PD",
+      content : "라이트 핑크",
+      price : 178000,
+      url: "/img/keyboard_00_05.jpg"
+    },
+        {
+      id : 6,
+      title : "레오폴드 FC750RBT PD",
+      content : "화이트 블루스타",
+      price : 178000,
+      url: "/img/keyboard_00_06.jpg"
+    },
     
   ];
   export default data;

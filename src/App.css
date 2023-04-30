@@ -60,21 +60,33 @@
 }
 
 .carousel{
-  height: 500px;
+  /* height: 500px; */
+}
+
+#MainBanner .carousel-item{
+  height: 520px;
+}
+
+#MainBanner .carousel-indicators{
+  left: 0;
+  right: inherit;
+  bottom: calc(66% - 45px);
+  margin-left: 144px;
 }
 
 #MainBanner .carousel-indicators button{
-  position: relative;
-  width: 60px;
-  height: 5px;
+  position: absolute;
+  width: 5px;
+  height: 90px;
+  visibility: hidden;
 }
 
 #MainBanner .carousel-indicators button::before{
   content: "";
   display: block;
-  width: 0;
+  width: 100%;
   overflow: hidden;
-  height: 100%;
+  height: 0;
   position: absolute;
   top: 0;
   left: 0;
@@ -82,12 +94,159 @@
   transition: 0.36s linear;
 }
 
+#MainBanner .carousel-indicators .active{
+  visibility: visible;
+}
+
 #MainBanner .carousel-indicators .active::before{
-  animation: w100 4.8s 0s linear forwards;
+  animation: h100 4s 0s linear forwards;
   /* width: 100%; */
 }
 
-@keyframes w100 {
-  100%{width: 100%;}
+@keyframes h100 {
+  100%{height: 100%;}
 }
 
+.carousel-item img{
+  object-fit: contain;
+  height: 100%;
+}
+
+.bg{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+    z-index: 1;
+}
+
+.bg::before{
+  content: "";
+  display: block;
+  height: 100%;
+  width: 1600px;
+  margin: 0 auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30%);
+}
+
+.carousel-item.active .bg::before{
+  animation: fadeIn 0.5s 0s linear forwards;
+}
+
+@keyframes fadeIn {
+  100%{opacity: 1;visibility: visible; transform: none;}
+}
+
+.Main_01 .bg::before{
+  background: url(../public/img/Main_key1.png) no-repeat;
+  background-position: right;
+  background-size: contain;
+}
+
+.Main_02 .bg::before{
+  background: url(../public/img/Main_key2.png) no-repeat;
+  background-position: right;
+}
+
+.Main_03 .bg::before{
+  background: url(../public/img/Main_key4.png) no-repeat;
+  background-position: right;
+  background-size: contain;
+  width: 1480px;
+}
+
+.Main_04 .bg::before{
+  background: url(../public/img/Main_key5.png) no-repeat;
+  background-position: right;
+  background-size: contain;
+}
+
+.in_left{
+  
+
+}
+
+.des{
+  top: 32%;
+  left: 80px;
+}
+
+.des h4{
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.des p{
+  font-size: 17px;
+}
+
+.pbt{
+  background: #fcfcfc;
+}
+
+.step{
+  background: linear-gradient(90deg, #fafafa 100%, #f9f9f9 100%);
+}
+
+.step::after{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100px;
+  background: #f3f3f3;
+}
+
+.Bestswipe .swiper-slide h4,
+.item h4{
+  font-size: 17px;
+}
+
+.item{
+  cursor: pointer;
+}
+
+.item-img,
+.item h4,
+.item p{
+  transition: 0.32s ease;
+}
+
+.item-cont{
+  overflow: hidden;
+}
+
+.item:hover .item-img{
+  transform: scale(1.2);
+}
+
+.item:hover h4,
+.item:hover p{
+  color: #ee9419;
+}
+
+.swiper-scrollbar{
+  height: 5px;
+  background: #f7f7f7;
+}
+
+.Bestswipe .swiper-button-prev,
+.Bestswipe .swiper-button-next{
+  color: #ee9419;
+}
+
+.Bestswipe .swiper-button-prev:hover::after,
+.Bestswipe .swiper-button-next:hover::after{
+  animation: move 1s linear infinite alternate;
+}
+
+@keyframes move {
+  0%{
+    transform: none;
+  }
+  100%{
+    transform: translateX(50%);
+  }
+}
