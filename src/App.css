@@ -12,6 +12,10 @@
   /* background-image: url(./banner.webp); */
 }
 
+.cont{
+  margin-top: 110px;
+}
+
 .item-img{
   width: 80%;
 }
@@ -249,4 +253,31 @@
   100%{
     transform: translateX(50%);
   }
+}
+
+.tab a{
+  color: #282c34;
+  font-size: 1rem;
+  text-decoration: none;
+  background: #f3f3f3;
+  transition: 0.3s ease-in;
+}
+
+.tab a:hover{
+  background: #ee9419;
+  color: #fafafa;
+}
+
+.table_h{
+  line-height: 50px;
+  background: #fcfcfc;
+  border-bottom: 1px solid #999;
+}
+
+.t_wrap td{
+  line-height: 50px;
+}
+
+.t_wrap tbody{
+  border-bottom: 1px solid #f7f7f7;
 }

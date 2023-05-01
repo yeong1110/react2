@@ -20,6 +20,10 @@ import List from './Component/List.js';
 import Detail from './Pages/Detail.js';
 import About from './Pages/About.js';
 import axios from 'axios';
+import CarouselImg from './Component/CarouselImg';
+import Community from './Pages/Community.js';
+import Table from './Component/Table.js'
+import Customer from './Pages/Customer';
 
 
 let count = 0;
@@ -48,9 +52,10 @@ function App() {
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={()=>{navigate('/about')}}>about</Nav.Link>
-            <Nav.Link onClick={()=>{navigate('/detail/0')}}>Keyboard</Nav.Link>
+            <Nav.Link onClick={()=>{navigate('/detail')}}>Keyboard</Nav.Link>
             {/* <Nav.Link onClick={()=>{navigate(-1)}}>이전</Nav.Link> */}
-            <Nav.Link >custom</Nav.Link>
+            <Nav.Link onClick={()=>{navigate('/community')}}>community</Nav.Link>
+            <Nav.Link onClick={()=>{navigate('/customer')}}>customer</Nav.Link>
             {/* <Nav.Link onClick={()=>{navigate('/about/member')}}>member</Nav.Link>
             <Nav.Link onClick={()=>{navigate('/about/location')}}>location</Nav.Link> */}
           </Nav>
@@ -262,12 +267,89 @@ function App() {
       } />
       <Route path='*' element={<div>404Error</div>}/>
       <Route path='/about' element={<About></About>}>
-        <Route path='member' element={ <div>멤버들</div> }/>
-        <Route path='location' element={ <div>회사위치</div> }/>
+        <Route path='member' element={ <div className='mt-5'>이념
+          <div className='container'>
+            <div className='cont'></div>
+          </div>
+        </div> }/>
+        <Route path='location' element={ <div className='mt-5'>회사위치</div> }/>
       </Route>
-        <Route path='/detail/:id' element={<Detail items={items}></Detail>}></Route>
+      <Route path='/detail' element={
+        <div className='container'>키보드
+          <div className='row cont'>
+            {
+              items.map(function(parm,i){
+                return(
+                  <List items={items[i]} i={i} />
+                )
+              })
+            }
+          </div>
+        </div>
+        
+      }
+      />
+      <Route path='/detail/:id' element={<Detail items={items}></Detail>}></Route>
         {/* url parameter */}
         {/* 유저가 뭐라는 간에 디테일 컴포넌트를 열어라 */}
+      <Route path='/customer' element={ <Customer/> }>
+        <Route path='qna' element={
+          
+          <div>
+            <h3 className='mb-5 fw-bold'>QNA</h3>
+            <div>
+            <Table title={'[문의] '}></Table>
+            </div>
+          </div>
+            }>
+        </Route>
+        <Route path='faq' element={
+                    <div>
+                    <h3 className='mb-5 fw-bold'>FAQ</h3>
+                    <div>
+                      <dt>질문1</dt>
+                      <dd>답변1</dd>
+                    </div>
+                  </div>
+        }></Route>
+      </Route>
+      <Route path='/community' element={<Community/>}>
+        <Route path='info' element={ 
+        <div >
+            <h3 className='mb-5 fw-bold'>공지사항</h3>
+            <div className='container'>
+              <div className=''>
+                <Table title={'[공지] '}></Table>
+                {/* <table className='w-100 t_wrap'>
+                  <thead className='table_h'>
+                    <th style={{"width":""}}>제목</th>
+                    <th style={{"width":"14%"}}>작성자</th>
+                    <th style={{"width":"10%"}}>조회수</th>
+                    <th style={{"width":"15%"}}>작성일지</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>공지1</td>
+                      <td>운영자</td>
+                      <td>0</td>
+                      <td>2023-05-02</td>
+                    </tr>
+                  </tbody>
+                </table> */}
+              </div>
+            </div>
+          </div> }/>
+        <Route path='event' element={
+          <div>
+            <h3 className='mb-5 fw-bold'>이벤트</h3>
+            <div>
+            <Table title={'[이벤트] '}></Table> 
+            </div>
+          </div>
+            }/>
+      </Route>
+        
+      
       </Routes>
 
 

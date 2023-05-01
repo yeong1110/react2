@@ -1,18 +1,16 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
-const About = () => {
+const Community = () => {
     return (
-        <div className='company cont'>
+        <div className='commu cont'>
             <div className='d-flex container'>
             <div className='tab d-flex container flex-column col-2'>
-                <h4>About</h4>
-                <Link className='p-3' to='/about/member'>이념</Link>
-                <Link className='p-3' to='/about/location'>지도</Link>
+                <h4>COMMUNITY</h4>
+                <Link className='p-3' to='/community/info'>공지사항</Link>
+                <Link className='p-3' to='/community/event'>이벤트</Link>
             </div>
             <div className='company_cont col-10'>
-            <h2>LEOPOLD의</h2>
-            <h2>LEOPOLD만의</h2>
             <Outlet></Outlet>
             </div>
         </div>
@@ -20,4 +18,4 @@ const About = () => {
     );
 };
 
-export default About;
+export default Community;
