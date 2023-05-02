@@ -380,6 +380,15 @@ ul,li,ol,dl{
 
 .des-img-box{
   overflow: hidden;
+  height: 600px;
+
+}
+
+.des-img-top{
+  background: url(/public/img/cherry.png) no-repeat;
+  width: 100%;
+  height: 100%;
+  background-position: right;
 }
 
 .scale{

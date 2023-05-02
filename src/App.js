@@ -23,9 +23,6 @@ import axios from 'axios';
 import Community from './Pages/Community.js';
 import Table from './Component/Table.js'
 import Customer from './Pages/Customer';
-import $ from 'jquery';
-
-
 
 let count = 0;
 
@@ -33,18 +30,17 @@ function App() {
   let [items, setItems] = useState(data);
   let navigate = useNavigate();
   const targetRef = useRef(null);
+
   const handleScroll = () => {
     //console.log("scrolling");
     
     if (window.scrollY > 0) {
-      console.log($('.'+targetRef.current.className))
-      $('.'+targetRef.current.className).addClass('active');
-      
-      
+      targetRef.current.classList.add("active")     
+
     }
-    // else{
-    //   targetRef.current.
-    // }
+    else{
+      targetRef.current.classList.remove("active")
+    }
   };
 
   useEffect(() => {    
@@ -73,7 +69,7 @@ function App() {
 
         <Container>
           <Navbar.Brand onClick={()=>{navigate('/')}}>
-            <img src={process.env.PUBLIC_URL + '/img/HeadLogo.jpg'} alt="" />
+            <img src={process.env.PUBLIC_URL + '/img/Logo.png'} alt="" />
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={()=>{navigate('/about')}}>about</Nav.Link>
@@ -148,8 +144,6 @@ function App() {
               spaceBetween={50}
               slidesPerView={4}
               navigation
-              onSlideChange={() => console.log('slide change')}
-              onSwiper={(swiper) => console.log(swiper)}
             >
               <SwiperSlide>
               <div className="item" onClick={()=>{navigate('/detail/2')}}>
@@ -248,25 +242,25 @@ function App() {
                     
                   >
                     <SwiperSlide>
-                    <div className='chuk' style={{'--background':'#084298','color':'#fff'}}>청축</div>
+                    <div className='chuk text-white' style={{'--background':'#0ad2f0'}}>청축</div>
                     </SwiperSlide>
                     <SwiperSlide>
-                    <div className='chuk' style={{'--background':'#ee9419'}}>갈축</div>
+                    <div className='chuk text-white' style={{'--background':'#c57c0e'}}>갈축</div>
                     </SwiperSlide>
                     <SwiperSlide>
-                    <div className='chuk text-white' style={{'--background':'#333'}}>적축</div>
+                    <div className='chuk text-white' style={{'--background':'#f1171c'}}>적축</div>
                     </SwiperSlide>
                     <SwiperSlide>
                     <div className='chuk text-white' style={{'--background':'#333'}}>흑축</div>
                     </SwiperSlide>
                     <SwiperSlide>
-                    <div className='chuk text-white' style={{'--background':'#333','fontSize':'18px'}}>저소음<br />적축</div>
+                    <div className='chuk text-white' style={{'--background':'#c31e1f','fontSize':'18px'}}>저소음<br />적축</div>
                     </SwiperSlide>
                     <SwiperSlide>
                     <div className='chuk' style={{'--background':'#fafafa'}}>백축</div>
                     </SwiperSlide>
                     <SwiperSlide>
-                    <div className='chuk' style={{'--background':'#333'}}>은축</div>
+                    <div className='chuk' style={{'--background':'#c0c0c0'}}>은축</div>
                     </SwiperSlide>
                   </Swiper>
                   <p className='m-0 fs-20 fw-bold'>키보드</p>
@@ -278,7 +272,7 @@ function App() {
               <div className='d-flex'>
               <div className='col-lg-12 position-relative'>
               <div className='des position-absolute'>
-                  <h4 className='text-start'>Find the 
+                  <h4 className='text-start' ref={targetRef}>Find the 
                     <br /> switch that
                     <br /> suits me</h4>
                   <p className='text-start pt-3 text-black-50'>사용자의 성향을 고려한
@@ -291,7 +285,8 @@ function App() {
                     </p>
                 </div>
                 <div className='des-img-box'>
-                <img className='w-100 scale' src={process.env.PUBLIC_URL + '/img/cherry.png'} alt="" />
+                  <div className='des-img-top'></div>
+                {/* <img className='w-100 scale' src={process.env.PUBLIC_URL + '/img/cherry.png'} alt="" /> */}
                 </div>
               </div>
               </div>
@@ -304,7 +299,8 @@ function App() {
                     PBT 이중사출 키캡
                     </p>
                 </div>
-                <div className='des-img-box'>
+                <div className=''>
+                  <div className='des-img-bottom overflow-hidden'></div>
                 <img className='w-100 scale' src={process.env.PUBLIC_URL + './img/cherry02.png'} alt="" />
                 </div>
               </div>
@@ -547,7 +543,7 @@ function App() {
       </Routes>
 
       <footer className='foot pt-5 text-start pb-3'>
-        <h2 className='text-center mb-5'><Link to={'/'}><img src={process.env.PUBLIC_URL + '/img/HeadLogo.jpg'} alt="" /></Link></h2>
+        <h2 className='text-center mb-5'><Link to={'/'}><img src={process.env.PUBLIC_URL + '/img/Logo.png'} alt="" /></Link></h2>
         <Container >
           <Row>
             <Col className='foot_r' md={6}>
