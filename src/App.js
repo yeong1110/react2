@@ -13,6 +13,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import AOS from "aos";
+import "aos/dist/aos.css";
 import styled from "styled-components";
 import './App.css';
 import data from './data.js';
@@ -24,16 +26,31 @@ import Community from './Pages/Community.js';
 import Table from './Component/Table.js'
 import Customer from './Pages/Customer';
 
+
 let count = 0;
 
 function App() {
   let [items, setItems] = useState(data);
   let navigate = useNavigate();
   const targetRef = useRef(null);
+  const animRef = useRef();
 
   const handleScroll = () => {
-    //console.log("scrolling");
+    //console.log("scrolling")
+    // const targetTop = document.getElementsByClassName('animRef').offsetTop;
+    // const ani_targetTop = targetRef.current.offsetHeight;
+    const ani_targetTop = animRef.current?.offsetTop;
+    const winPos = document.querySelector('html').scrollTop;
+    const wh = document.querySelector('html').scrollHeight;
     
+    if(winPos > ani_targetTop - wh + (wh / 2)){
+      console.log(animRef);
+      // targetRef.current.classList.add("active")
+    }    
+    else{
+        // targetRef.current.classList.remove("active")
+      }
+
     if (window.scrollY > 0) {
       targetRef.current.classList.add("active")     
 
@@ -43,14 +60,16 @@ function App() {
     }
   };
 
-  useEffect(() => {    
-    const timer = setInterval(() => {
-      window.addEventListener("scroll", handleScroll);
-    }, 100);
-    return () => {
-      clearInterval(timer);
-      window.removeEventListener("scroll", handleScroll);
-    };
+  useEffect(() => {
+    AOS.init();
+    window.addEventListener("scroll", handleScroll);
+    // const timer = setInterval(() => {
+    //   window.addEventListener("scroll", handleScroll);
+    // });
+    // return () => {
+    //   clearInterval(timer);
+    //   window.removeEventListener("scroll", handleScroll);
+    // };
   }, []);
 
   // axios.get('http://localhost:3002/post')
@@ -65,7 +84,7 @@ function App() {
   return (
     <div className="App">
 
-            <Navbar variant="tabs" ref={targetRef} className='Navi'>
+            <Navbar variant="tabs"  className='Navi' ref={targetRef}>
 
         <Container>
           <Navbar.Brand onClick={()=>{navigate('/')}}>
@@ -137,8 +156,8 @@ function App() {
     </Carousel>
         <div className="container">
           <div className="row">
-            <div className='Bestswipe'>
-              <h2 className='pt-5 fw-bold'>Best Products</h2>
+            <div className='Bestswipe' data-aos="fade-up">
+              <h2 className='pt-5 fw-bold ' >Best Products</h2>
             <Swiper
               modules={[Navigation, Pagination, Scrollbar, A11y]}
               spaceBetween={50}
@@ -194,7 +213,7 @@ function App() {
             </Swiper>
             </div>
             <div className='row align-items-center'>
-              <div className='main_img col-lg-8'>
+              <div className='main_img col-lg-8' data-aos="fade-right">
                 <Swiper
                     modules={[Autoplay]}
                     slidesPerView={1}
@@ -228,8 +247,8 @@ function App() {
                 </Swiper>
               </div>
               <div className='main_text col-lg-4 d-flex flex-column'>
-                <h3 className='text-start fw-bold mb-5 anim'>자신만의 키보드를 <br /> 커스터마이징 해보세요</h3>
-                <div className=' d-flex flow_wrap'>
+                <h3 className='text-start fw-bold mb-5 animRef ' data-aos="fade-up" ref={animRef}>자신만의 키보드를 <br /> 커스터마이징 해보세요</h3>
+                <div className=' d-flex flow_wrap' data-aos="fade-left" data-aos-duration="500">
                   <Swiper className='position-relative flow d-flex align-content-center justify-content-center'
                     modules={[Autoplay]}
                     slidesPerView={1}
@@ -272,36 +291,37 @@ function App() {
               <div className='d-flex'>
               <div className='col-lg-12 position-relative'>
               <div className='des position-absolute'>
-                  <h4 className='text-start' ref={targetRef}>Find the 
-                    <br /> switch that
+                  <h4 className='text-start'data-aos="fade-up" >Find the 
+                    switch that
                     <br /> suits me</h4>
-                  <p className='text-start pt-3 text-black-50'>사용자의 성향을 고려한
-                    <br />
+                  <p className='text-start pt-3 text-black-50' data-aos="fade-up" data-aos-duration="500">사용자의 성향을 고려한
+                    
                     7가지의 스위치로
                     <br />
                     자신에게 맞는 스위치를
-                    <br />
+                    
                     선택할 수 있습니다
                     </p>
                 </div>
                 <div className='des-img-box'>
-                  <div className='des-img-top'></div>
+                  <div className='des-img-top' data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine"></div>
                 {/* <img className='w-100 scale' src={process.env.PUBLIC_URL + '/img/cherry.png'} alt="" /> */}
                 </div>
               </div>
               </div>
-              <div className='d-flex'>
+              <div className='d-flex mt-5'>
               <div className='col-lg-12 position-relative'>
-              <div className='des position-absolute'>
-                  <h4 className='text-start'>PBT DoubleShot </h4>
-                  <p className='text-start pt-3 text-black-50'>자체 개발한 레오폴드만의 최고급
+              <div className='des position-absolute' style={{'top':'7%'}}>
+                  <h4 className='text-start' data-aos="fade-up">PBT DoubleShot </h4>
+                  <p className='text-start pt-3 text-black-50' data-aos="fade-up" data-aos-duration="500">자체 개발한 레오폴드만의 최고급
                     <br />
                     PBT 이중사출 키캡
                     </p>
                 </div>
-                <div className=''>
-                  <div className='des-img-bottom overflow-hidden'></div>
-                <img className='w-100 scale' src={process.env.PUBLIC_URL + './img/cherry02.png'} alt="" />
+                <div className='des-img-box' data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                  <div className='des-img-bottom overflow-hidden'>
+                    {/* <img className='w-100 scale' src={process.env.PUBLIC_URL + './img/cherry02.png'} alt="" /> */}
+                  </div>
                 </div>
               </div>
               {/* <div className='col-lg-6 in_left'>
@@ -310,21 +330,21 @@ function App() {
               <div className='d-flex justify-content-end position-relative pbt'>
               <div className='des position-absolute'>
                   
-                  <p className='text-start pt-3 text-black-50'>레오폴드만의 PBT 이중사출 키캡은
+                  <p className='text-start pt-3 text-black-50' data-aos="fade-up">레오폴드만의 PBT 이중사출 키캡은
                     <br />
                     1.5mm 두께에 세련된 폰트가 적용되었으며, 각인 내구성을
                     <br />
                     높여 오랜 시간 사용헤도 손상 없이 사용할 수 있습니다.
                     </p>
                 </div>
-                <img src={process.env.PUBLIC_URL + './img/cherry03.png'} alt="" />
+                <img data-aos="fade-left" src={process.env.PUBLIC_URL + './img/cherry03.png'} alt="" />
               </div>
               <div className='d-flex justify-content-center flex-column step'>
               <div className='position-relative'>
               <div className='des position-absolute'>
-                  <h4 className='text-start'>Step Sculpture2</h4>
-                  <h5 className='text-start'>편안한 타건의 최적화된 높이</h5>
-                  <p className='text-start pt-3 text-black-50'>키캡의 각도를 다르게 해 경사를 만드는 방식으로 손가락과 손목의 피로를 덜어주며
+                  <h4 className='text-start mb-4' data-aos="fade-up">Step Sculpture2</h4>
+                  <h5 className='text-start' data-aos="fade-up" data-aos-easing="linear" data-aos-duration="500">편안한 타건에 최적화된 높이</h5>
+                  <p className='text-start pt-3 text-black-50' data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">키캡의 각도를 다르게 해 경사를 만드는 방식으로 손가락과 손목의 피로를 덜어주며
                     <br />
                     손가락과 키캡의 면적을 일정하게 유지시켜 정확한 타이핑이 가능합니다.
                     </p>
@@ -382,8 +402,19 @@ function App() {
         </div> }/>
       </Route>
       <Route path='/detail' element={
-        <div className='container'>키보드
-          <div className='row cont'>
+        <div className='container'>
+          <div>
+            <img className='w-100' src={process.env.PUBLIC_URL + "./img/ListBanner.jpg"} alt="" />
+          </div>
+          <div>
+            <h3 className='pt-5 fw-bold'>Keyboard</h3>
+          </div>
+          <div className='row cont' data-aos="fade-up">
+            <div className='text-end total_l'>
+              total products {
+                data.length
+              }
+            </div>
             {
               items.map(function(parm,i){
                 return(
@@ -391,6 +422,7 @@ function App() {
                 )
               })
             }
+            <div className='mt-5'>1</div>
           </div>
         </div>
         
