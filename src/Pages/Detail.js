@@ -70,7 +70,8 @@ const Detail = (props) => {
                             
                             }}><img src={process.env.PUBLIC_URL + '/img/p__count_down.jpg'} alt="" /></span>
                             <span onClick={()=>{
-                                inputMount.current.value = inputMount.current.value +1;
+                                
+                                inputMount.current.value = Number(inputMount.current.value) +1;
                             }}><img src={process.env.PUBLIC_URL + '/img/p__count_up.jpg'} alt="" /></span>
                             </div>
 

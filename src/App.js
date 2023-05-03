@@ -33,25 +33,25 @@ function App() {
   let [items, setItems] = useState(data);
   let navigate = useNavigate();
   const targetRef = useRef(null);
-  const animRef = useRef();
+  const title1 = useRef();
+  const btpdRef = useRef();
+  let penRef = null;
 
-  const handleScroll = () => {
-    //console.log("scrolling")
-    // const targetTop = document.getElementsByClassName('animRef').offsetTop;
-    // const ani_targetTop = targetRef.current.offsetHeight;
-    const ani_targetTop = animRef.current?.offsetTop;
-    const winPos = document.querySelector('html').scrollTop;
-    const wh = document.querySelector('html').scrollHeight;
-    
-    if(winPos > ani_targetTop - wh + (wh / 2)){
-      console.log(animRef);
-      // targetRef.current.classList.add("active")
-    }    
-    else{
-        // targetRef.current.classList.remove("active")
+  const handleScroll = () => {    
+    const winPos = window.scrollY;
+    const wh = document.querySelector('html').clientHeight;
+    let targetTop = 0
+    document.querySelectorAll(".pen-box").forEach(function(item, idx){
+      targetTop = item?.offsetTop;
+      if(winPos > (targetTop - wh + (wh / 2))+ 5 ){
+        console.log(penRef[idx])
+        penRef[idx]?.classList?.add("active")
+      }    
+      else{
+        penRef[idx]?.classList?.remove("active")
       }
-
-    if (window.scrollY > 0) {
+  })
+      if (window.scrollY > 0) {
       targetRef.current.classList.add("active")     
 
     }
@@ -62,7 +62,6 @@ function App() {
 
   useEffect(() => {
     AOS.init();
-    window.addEventListener("scroll", handleScroll);
     // const timer = setInterval(() => {
     //   window.addEventListener("scroll", handleScroll);
     // });
@@ -70,6 +69,8 @@ function App() {
     //   clearInterval(timer);
     //   window.removeEventListener("scroll", handleScroll);
     // };
+    penRef = document.querySelectorAll(".pen");
+    window.addEventListener("scroll", handleScroll);
   }, []);
 
   // axios.get('http://localhost:3002/post')
@@ -87,8 +88,8 @@ function App() {
             <Navbar variant="tabs"  className='Navi' ref={targetRef}>
 
         <Container>
-          <Navbar.Brand onClick={()=>{navigate('/')}}>
-            <img src={process.env.PUBLIC_URL + '/img/Logo.png'} alt="" />
+          <Navbar.Brand style={{'width':'160px'}} onClick={()=>{navigate('/')}}>
+            <img className='w-100' src={process.env.PUBLIC_URL + '/img/Logo.svg'} alt="" />
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={()=>{navigate('/about')}}>about</Nav.Link>
@@ -156,8 +157,8 @@ function App() {
     </Carousel>
         <div className="container">
           <div className="row">
-            <div className='Bestswipe' data-aos="fade-up">
-              <h2 className='pt-5 fw-bold ' >Best Products</h2>
+            <div className='Bestswipe anim' >
+              <h2 className='pt-5 fw-bold'>Best Products</h2>
             <Swiper
               modules={[Navigation, Pagination, Scrollbar, A11y]}
               spaceBetween={50}
@@ -246,8 +247,8 @@ function App() {
                   </SwiperSlide>
                 </Swiper>
               </div>
-              <div className='main_text col-lg-4 d-flex flex-column'>
-                <h3 className='text-start fw-bold mb-5 animRef ' data-aos="fade-up" ref={animRef}>자신만의 키보드를 <br /> 커스터마이징 해보세요</h3>
+              <div className='main_text col-lg-4 d-flex flex-column pen-box' ref={title1}>
+                <h3 className='text-start fw-bold mb-5 pen'  ref={btpdRef}>자신만의 키보드를 <br /> 커스터마이징 해보세요</h3>
                 <div className=' d-flex flow_wrap' data-aos="fade-left" data-aos-duration="500">
                   <Swiper className='position-relative flow d-flex align-content-center justify-content-center'
                     modules={[Autoplay]}
@@ -289,9 +290,9 @@ function App() {
             <div className='introduce pt-5'>
               <h2 className='pb-5 fw-bold'>What's LEOPOLD?</h2>
               <div className='d-flex'>
-              <div className='col-lg-12 position-relative'>
-              <div className='des position-absolute'>
-                  <h4 className='text-start'data-aos="fade-up" >Find the 
+              <div className='col-lg-12 position-relative pen-box'>
+              <div className='des position-absolute '>
+                  <h4 className='text-start pen' >Find the 
                     switch that
                     <br /> suits me</h4>
                   <p className='text-start pt-3 text-black-50' data-aos="fade-up" data-aos-duration="500">사용자의 성향을 고려한
@@ -310,16 +311,17 @@ function App() {
               </div>
               </div>
               <div className='d-flex mt-5'>
-              <div className='col-lg-12 position-relative'>
-              <div className='des position-absolute' style={{'top':'7%'}}>
-                  <h4 className='text-start' data-aos="fade-up">PBT DoubleShot </h4>
+              <div className='col-lg-12 position-relative d-flex justify-content-lg-between flex-row-reverse pen-box'>
+              <div className='des' style={{'top':'7%'}}>
+                  <h4 className='text-start pen' >PBT DoubleShot </h4>
                   <p className='text-start pt-3 text-black-50' data-aos="fade-up" data-aos-duration="500">자체 개발한 레오폴드만의 최고급
                     <br />
                     PBT 이중사출 키캡
                     </p>
                 </div>
-                <div className='des-img-box' data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                <div className='' data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
                   <div className='des-img-bottom overflow-hidden'>
+                  <img data-aos="fade-left" src={process.env.PUBLIC_URL + './img/cherry05.png'} alt="" />
                     {/* <img className='w-100 scale' src={process.env.PUBLIC_URL + './img/cherry02.png'} alt="" /> */}
                   </div>
                 </div>
@@ -327,7 +329,7 @@ function App() {
               {/* <div className='col-lg-6 in_left'>
               </div> */}
               </div>
-              <div className='d-flex justify-content-end position-relative pbt'>
+              <div className='d-flex justify-content-end position-relative pbt pt-3'>
               <div className='des position-absolute'>
                   
                   <p className='text-start pt-3 text-black-50' data-aos="fade-up">레오폴드만의 PBT 이중사출 키캡은
@@ -340,16 +342,16 @@ function App() {
                 <img data-aos="fade-left" src={process.env.PUBLIC_URL + './img/cherry03.png'} alt="" />
               </div>
               <div className='d-flex justify-content-center flex-column step'>
-              <div className='position-relative'>
-              <div className='des position-absolute'>
-                  <h4 className='text-start mb-4' data-aos="fade-up">Step Sculpture2</h4>
+              <div className='position-relative pen-box'>
+              <div className='des position-absolute ' style={{'top':'10%'}}>
+                  <h4 className='text-start mb-4 pen'>Step Sculpture2</h4>
                   <h5 className='text-start' data-aos="fade-up" data-aos-easing="linear" data-aos-duration="500">편안한 타건에 최적화된 높이</h5>
                   <p className='text-start pt-3 text-black-50' data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">키캡의 각도를 다르게 해 경사를 만드는 방식으로 손가락과 손목의 피로를 덜어주며
                     <br />
                     손가락과 키캡의 면적을 일정하게 유지시켜 정확한 타이핑이 가능합니다.
                     </p>
                 </div>
-                <img src={process.env.PUBLIC_URL + './img/cherry04.png'} alt="" />
+                <img className='mt-5' src={process.env.PUBLIC_URL + './img/cherry04.png'} alt="" />
               </div>
               </div>
             </div>
@@ -361,14 +363,16 @@ function App() {
               })
             } */}
             <div>
-              <h4 className='fw-bold'>LEOPOLD는 항상 고객이 우선입니다</h4>
+              <h4 className='fw-bold mt-5 mb-5'>LEOPOLD는 항상 고객이 우선입니다</h4>
+              <div className='main-cus'>
+                <h6 className='mt-5 '>구입후 1년간 A/S무상수리</h6>
+                <p className='mb-3'>1년이 지나도 최소한의 금액으로 수리해 드립니다.</p>
               <Row>
-              <Col className='main-cus'>
-                <h6 className='mt-5'>구입후 1년간 A/S무상수리</h6>
-                <p>1년이 지나도 최소한의 금액으로 수리해 드립니다.</p>
-              </Col>
+              <Col><div className='cus'><p className='fs-20 pt-5 fw-bold'>온라인 고객센터</p> <div></div> </div> </Col>
+              <Col><div className='cus'><p className='fs-20 pt-5 fw-bold'>오프라인 매장</p> </div> </Col>
               </Row>
-              <Col></Col>
+
+              </div>
             </div>
           </div>
         </div>
@@ -575,7 +579,9 @@ function App() {
       </Routes>
 
       <footer className='foot pt-5 text-start pb-3'>
-        <h2 className='text-center mb-5'><Link to={'/'}><img src={process.env.PUBLIC_URL + '/img/Logo.png'} alt="" /></Link></h2>
+        <div className='d-flex justify-content-center align-items-center'>
+        <h2 className='text-center mb-5' style={{'width':'160px'}}><Link  to={'/'}><img className='w-100' src={process.env.PUBLIC_URL + '/img/Logo.svg'} alt="" /></Link></h2>
+        </div>
         <Container >
           <Row>
             <Col className='foot_r' md={6}>
