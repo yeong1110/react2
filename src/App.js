@@ -36,6 +36,7 @@ function App() {
   const title1 = useRef();
   const btpdRef = useRef();
   let penRef = null;
+  let [loadBox,setLoadBox] = useState(true)
 
   const handleScroll = () => {    
     const winPos = window.scrollY;
@@ -72,6 +73,9 @@ function App() {
     penRef = document.querySelectorAll(".pen");
     window.addEventListener("scroll", handleScroll);
   });
+  useEffect(()=>{
+    setLoadBox(false);
+  },[])
 
   // axios.get('http://localhost:3002/post')
   // useEffect(()=>{
@@ -84,7 +88,8 @@ function App() {
   
   return (
     <div className="App">
-
+      {loadBox == true? <div id='load'>Loading</div> : null }
+      
             <Navbar variant="tabs"  className='Navi' ref={targetRef}>
 
         <Container>
@@ -102,13 +107,13 @@ function App() {
           </Nav>
           <Nav className='navi-right'>
             <Nav.Link>
-              <img src={process.env.PUBLIC_URL + '/img/IconHeadSearch.png'} alt="검색" />
+              <img style={{'width':'30px'}} src={process.env.PUBLIC_URL + '/img/search.svg'} alt="검색" />
             </Nav.Link>
             <Nav.Link>
-              <img src={process.env.PUBLIC_URL + '/img/IconHeadCart.png'} alt="장바구니" />
+              <img style={{'width':'30px'}} src={process.env.PUBLIC_URL + '/img/bag.svg'} alt="장바구니" />
             </Nav.Link>
             <Nav.Link>
-              <img src={process.env.PUBLIC_URL + '/img/IconHeadLogin.png'} alt="로그인" />
+              <img style={{'width':'30px'}} src={process.env.PUBLIC_URL + '/img/login.svg'} alt="로그인" />
             </Nav.Link>
           </Nav>
         </Container>
