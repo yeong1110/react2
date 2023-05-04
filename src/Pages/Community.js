@@ -11,6 +11,9 @@ const Community = () => {
                 <Link className='p-3' to='/community/event'>이벤트</Link>
             </div>
             <div className='company_cont col-10'>
+            {/* <div className='about_bg'>
+                <img className='scale' src={process.env.PUBLIC_URL + '/img/service.jpg'} alt="" />
+            </div> */}
             <Outlet></Outlet>
             </div>
         </div>

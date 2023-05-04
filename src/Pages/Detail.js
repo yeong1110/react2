@@ -13,13 +13,13 @@ const Detail = (props) => {
     //유저가 url파라미터에 입력한 정보를 가져옴,작명했던 이름을 그대로 가져와야 정보를 받아올 수 있어(id),인덱싱 대신에 정보를 넣을 수도
     
     useEffect(()=>{
-        console.log("생명주기")
+        // console.log("생명주기")
         setTimeout(()=>{
             setAlerts(false);
         },3000)
 
         //마운트 ,업데이트 둘 다 동시에 실행
-    })
+    },[])
     useEffect(()=>{
         // isNaN 으로 숫자인지 문자인지 구별하기 위해 쓴 것
         if(isNaN(num) == true){
@@ -31,7 +31,7 @@ const Detail = (props) => {
     return (
         <div className='container'>
             {
-                alerts === true ? <div id='pop' className='alert alert-warning'>3초후 사라짐</div> : null
+                alerts === true ? null: <div id='pop' className='alert alert-warning d-flex align-itmes-center justify-content-center flex-column'> <button onClick={()=>{setAlerts(true)}} className='btn btn-warning position-absolute pop-btn'>x</button> 멤버십 가입하고 <br />혜택 받으세요! <button className='my_button'>지금바로 회원가입</button> </div> 
             }
             
             <div className='row prd_wrap'>
@@ -43,9 +43,9 @@ const Detail = (props) => {
 
                     <p className='pt-3 d-flex justify-content-between'><span className='fw-bold'>color</span>{props.items[id].content}</p>
                     <p className='pt-3 d-flex justify-content-between'><span className='fw-bold'>price</span>{props.items[id].price}원</p>
-                    <div className='position-relative d-flex justify-content-between'>
+                    <div className='position-relative d-flex justify-content-between mt-3'>
                     <span>스위치 옵션</span>
-                        <div className='select_box mt-3'>
+                        <div className='select_box '>
                             <select name="switch" id="switch" className='w-40 '>
                                 <option value="2">청축</option>
                                 <option value="3">적축</option>

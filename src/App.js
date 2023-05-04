@@ -44,7 +44,7 @@ function App() {
     document.querySelectorAll(".pen-box").forEach(function(item, idx){
       targetTop = item?.offsetTop;
       if(winPos > (targetTop - wh + (wh / 2))+ 5 ){
-        console.log(penRef[idx])
+        // console.log(penRef[idx])
         penRef[idx]?.classList?.add("active")
       }    
       else{
@@ -71,7 +71,7 @@ function App() {
     // };
     penRef = document.querySelectorAll(".pen");
     window.addEventListener("scroll", handleScroll);
-  }, []);
+  });
 
   // axios.get('http://localhost:3002/post')
   // useEffect(()=>{
@@ -92,13 +92,24 @@ function App() {
             <img className='w-100' src={process.env.PUBLIC_URL + '/img/Logo.svg'} alt="" />
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link onClick={()=>{navigate('/about')}}>about</Nav.Link>
+            <Nav.Link onClick={()=>{navigate('/about/member')}}>About</Nav.Link>
             <Nav.Link onClick={()=>{navigate('/detail')}}>Keyboard</Nav.Link>
             {/* <Nav.Link onClick={()=>{navigate(-1)}}>이전</Nav.Link> */}
-            <Nav.Link onClick={()=>{navigate('/community')}}>community</Nav.Link>
-            <Nav.Link onClick={()=>{navigate('/customer')}}>customer</Nav.Link>
+            <Nav.Link onClick={()=>{navigate('/community/info')}}>Community</Nav.Link>
+            <Nav.Link onClick={()=>{navigate('/customer/faq')}}>Customer</Nav.Link>
             {/* <Nav.Link onClick={()=>{navigate('/about/member')}}>member</Nav.Link>
             <Nav.Link onClick={()=>{navigate('/about/location')}}>location</Nav.Link> */}
+          </Nav>
+          <Nav className='navi-right'>
+            <Nav.Link>
+              <img src={process.env.PUBLIC_URL + '/img/IconHeadSearch.png'} alt="검색" />
+            </Nav.Link>
+            <Nav.Link>
+              <img src={process.env.PUBLIC_URL + '/img/IconHeadCart.png'} alt="장바구니" />
+            </Nav.Link>
+            <Nav.Link>
+              <img src={process.env.PUBLIC_URL + '/img/IconHeadLogin.png'} alt="로그인" />
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -248,9 +259,9 @@ function App() {
                 </Swiper>
               </div>
               <div className='main_text col-lg-4 d-flex flex-column pen-box' ref={title1}>
-                <h3 className='text-start fw-bold mb-5 pen'  ref={btpdRef}>자신만의 키보드를 <br /> 커스터마이징 해보세요</h3>
+                <h3 className='text-start fw-bold mb-5'  ref={btpdRef}>자신만의 키보드를 <br /> <span className='pen'>커스터마이징</span>  해보세요</h3>
                 <div className=' d-flex flow_wrap' data-aos="fade-left" data-aos-duration="500">
-                  <Swiper className='position-relative flow d-flex align-content-center justify-content-center'
+                  <Swiper className='position-relative flow d-flex align-content-center justify-content-center fw-bold'
                     modules={[Autoplay]}
                     slidesPerView={1}
                     autoplay={{
@@ -288,12 +299,12 @@ function App() {
               </div>
             </div>
             <div className='introduce pt-5'>
-              <h2 className='pb-5 fw-bold'>What's LEOPOLD?</h2>
+              <h2 className=' fw-bold'>What's LEOPOLD?</h2>
               <div className='d-flex'>
               <div className='col-lg-12 position-relative pen-box'>
               <div className='des position-absolute '>
-                  <h4 className='text-start pen' >Find the 
-                    switch that
+                  <h4 className='text-start' >Find the 
+                    <span className='pen ms-2'>switch</span>  that
                     <br /> suits me</h4>
                   <p className='text-start pt-3 text-black-50' data-aos="fade-up" data-aos-duration="500">사용자의 성향을 고려한
                     
@@ -311,17 +322,17 @@ function App() {
               </div>
               </div>
               <div className='d-flex mt-5'>
-              <div className='col-lg-12 position-relative d-flex justify-content-lg-between flex-row-reverse pen-box'>
-              <div className='des' style={{'top':'7%'}}>
+              <div className='col-lg-12 position-relative d-flex flex-row-reverse pen-box'>
+              <div className='des ps-5' style={{'top':'7%'}}>
                   <h4 className='text-start pen' >PBT DoubleShot </h4>
                   <p className='text-start pt-3 text-black-50' data-aos="fade-up" data-aos-duration="500">자체 개발한 레오폴드만의 최고급
                     <br />
                     PBT 이중사출 키캡
                     </p>
                 </div>
-                <div className='' data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                <div className='pe-5' data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
                   <div className='des-img-bottom overflow-hidden'>
-                  <img data-aos="fade-left" src={process.env.PUBLIC_URL + './img/cherry05.png'} alt="" />
+                  <img data-aos="fade-left" src={process.env.PUBLIC_URL + '/img/cherry05.png'} alt="" />
                     {/* <img className='w-100 scale' src={process.env.PUBLIC_URL + './img/cherry02.png'} alt="" /> */}
                   </div>
                 </div>
@@ -330,7 +341,7 @@ function App() {
               </div> */}
               </div>
               <div className='d-flex justify-content-end position-relative pbt pt-3'>
-              <div className='des position-absolute'>
+              <div className='des d-flex align-items-center'>
                   
                   <p className='text-start pt-3 text-black-50' data-aos="fade-up">레오폴드만의 PBT 이중사출 키캡은
                     <br />
@@ -339,19 +350,19 @@ function App() {
                     높여 오랜 시간 사용헤도 손상 없이 사용할 수 있습니다.
                     </p>
                 </div>
-                <img data-aos="fade-left" src={process.env.PUBLIC_URL + './img/cherry03.png'} alt="" />
+                <img data-aos="fade-left" src={process.env.PUBLIC_URL + '/img/cherry03.png'} alt="" />
               </div>
               <div className='d-flex justify-content-center flex-column step'>
               <div className='position-relative pen-box'>
               <div className='des position-absolute ' style={{'top':'10%'}}>
-                  <h4 className='text-start mb-4 pen'>Step Sculpture2</h4>
+                  <h4 className='text-start mb-4'> <span className='pen'>Step Sculpture2</span> </h4>
                   <h5 className='text-start' data-aos="fade-up" data-aos-easing="linear" data-aos-duration="500">편안한 타건에 최적화된 높이</h5>
                   <p className='text-start pt-3 text-black-50' data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">키캡의 각도를 다르게 해 경사를 만드는 방식으로 손가락과 손목의 피로를 덜어주며
                     <br />
                     손가락과 키캡의 면적을 일정하게 유지시켜 정확한 타이핑이 가능합니다.
                     </p>
                 </div>
-                <img className='mt-5' src={process.env.PUBLIC_URL + './img/cherry04.png'} alt="" />
+                <img className='mt-5' src={process.env.PUBLIC_URL + '/img/cherry04.png'} alt="" />
               </div>
               </div>
             </div>
@@ -362,14 +373,40 @@ function App() {
                 )
               })
             } */}
-            <div>
-              <h4 className='fw-bold mt-5 mb-5'>LEOPOLD는 항상 고객이 우선입니다</h4>
+            <div className='pen-box'>
+              <h4 className='fw-bold mt-5 mb-5 '> <span className='pen'>LEOPOLD는 항상 고객이 우선입니다</span></h4>
               <div className='main-cus'>
-                <h6 className='mt-5 '>구입후 1년간 A/S무상수리</h6>
-                <p className='mb-3'>1년이 지나도 최소한의 금액으로 수리해 드립니다.</p>
+                <h6 className='mt-5 fs-5'>구입후 1년간 A/S무상수리</h6>
+                <p className='mb-3 fs-6'>1년이 지나도 최소한의 금액으로 수리해 드립니다.</p>
+              <Row className='pt-5'>
+              <Col>
+              <div className='cus' data-aos="fade-right"><p className='fs-20 pt-4 fw-bold'>온라인 고객센터</p>
               <Row>
-              <Col><div className='cus'><p className='fs-20 pt-5 fw-bold'>온라인 고객센터</p> <div></div> </div> </Col>
-              <Col><div className='cus'><p className='fs-20 pt-5 fw-bold'>오프라인 매장</p> </div> </Col>
+                    <Col md={6}>
+                      <img className='jump' style={{'width':'40%'}} src={process.env.PUBLIC_URL + '/img/cus4.svg'} alt="" />
+                    </Col>
+                    <Col className='d-flex justify-content-center align-items-center'>
+                      <button style={{'padding':'20px 35px','marginTop':'-20px'}} className='my_button fw-bold'>바로가기</button>
+                    </Col>
+              </Row>
+              </div>
+              </Col>
+              <Col>
+              <div className='cus' data-aos="fade-left"><p className='fs-20 pt-4 fw-bold'>오프라인 매장</p>
+              <p className='text-start d-flex justify-content-center fs-6'>온라인샵에서 판매되는 정전용량, 기계식키보드와 마우스 및 <br /> 각종 게이밍 장비를 사용해보고 구입할수 있습니다.</p>
+              <Row>
+                    <Col className='d-flex justify-content-center align-items-center'>
+                      <div style={{'marginLeft':'73px','marginTop':'-40px'}}>
+                      <p className='text-start fw-bold d-flex ti'>PC 기어 <span className='ps-3'>02-701-8144</span> </p>
+                      <p className='text-start fw-bold d-flex ti'>리더스키 <span className='ps-3'>010-4231-3686</span></p>
+                      </div>
+                    </Col>
+                    <Col md={5}>
+                      <img style={{'width':'70%'}} src={process.env.PUBLIC_URL + '/img/store4.svg'} alt="" />
+                    </Col>
+              </Row>
+              </div> 
+              </Col>
               </Row>
 
               </div>
@@ -394,14 +431,54 @@ function App() {
       } />
       <Route path='*' element={<div>404Error</div>}/>
       <Route path='/about' element={<About></About>}>
-        <Route path='member' element={ <div className='mt-5'>이념
+        <Route path='member' element={ <div className='mt-5'>
+          <h2 className='fs-3'> <span className='info-pen'>이념</span></h2>
           <div className='container'>
-            <div className='cont'></div>
+            <div className='cont'>
+              <Row>
+                <Col>
+                <div style={{'height':'300px'}}>
+                  <img style={{'width':'80%'}} src={process.env.PUBLIC_URL + '/img/trust2.svg'} alt="" />
+                </div>
+                <div>
+                  <h3 className='fw-bold pb-2'>신뢰</h3>
+                  <p>레오폴드는 고객과의 신뢰를 바탕으로 나아갑니다</p>
+                </div>
+                </Col>
+                <Col>
+                <div style={{'height':'300px'}}>
+                  <img style={{'width':'60%'}} src={process.env.PUBLIC_URL + '/img/love.svg'} alt="" />
+                </div>
+                <div>
+                  <h3 className='fw-bold pb-2'>고객 만족</h3>
+                  <p>레오폴드는 고객을 만족시키기 위해 노력합니다</p>
+                </div>
+                </Col>
+                <Col>
+                <div style={{'height':'300px'}}>
+                  <img style={{'width':'40%'}} src={process.env.PUBLIC_URL + '/img/made.svg'} alt="" />
+                </div>
+                <div>
+                  <h3 className='fw-bold pb-2'>장인정신</h3>
+                  <p>레오폴드의 제품에는 땀방울이 녹아들어 있습니다</p>
+                </div>
+                </Col>
+              </Row>
+            </div>
           </div>
         </div> }/>
-        <Route path='location' element={ <div className='mt-5'>회사위치
-          <div>
+        <Route path='location' element={ <div className='mt-5'>
+        <h2 className='fs-3 pb-4'> <span className='info-pen'>찾아오시는 길</span></h2>
+          <div className='map position-relative overflow-hidden'>
             <img src="https://map2.daum.net/map/mapservice?FORMAT=PNG&SCALE=2.5&MX=451100&MY=1161030&S=0&IW=504&IH=310&LANG=0&COORDSTM=WCONGNAMUL&logo=kakao_logo" alt="" />
+          </div>
+          <div className='text-start pt-4'>
+            <p className='ti d-flex fw-bold'>주소</p>
+            <p>경기도 고양시 일산동구 하늘마을로 158  대방 트리플라온 B동 306호 레오폴드(주)</p>
+            <p className='ti d-flex fw-bold'>연락처</p>
+            <p>050-2020-1030</p>
+            <p className='ti d-flex fw-bold'>영업시간</p>
+            <p>평일 오전 10:00~오후 5:00 / 주말 및 공휴일 휴무 / 점심시간 오후 12:00~1:30</p>
           </div>
         </div> }/>
       </Route>
@@ -411,7 +488,7 @@ function App() {
             <img className='w-100' src={process.env.PUBLIC_URL + "./img/ListBanner.jpg"} alt="" />
           </div>
           <div>
-            <h3 className='pt-5 fw-bold'>Keyboard</h3>
+            <h3 className='pt-5 fw-bold'> <span className='info-pen'>Keyboard</span> </h3>
           </div>
           <div className='row cont' data-aos="fade-up">
             <div className='text-end total_l'>
@@ -448,7 +525,7 @@ function App() {
         </Route>
         <Route path='faq' element={
                     <div className='pl-5 pr-5 pe-auto'>
-                    <h3 className='mb-5 fw-bold'>FAQ</h3>
+                    <h3 className='mb-5 fw-bold'> <span className='info-pen'>FAQ</span> </h3>
                     <div className='text-start'>
                     <Accordion defaultActiveKey="0">
                       <Accordion.Item eventKey="0">
@@ -539,10 +616,12 @@ function App() {
                   </div>
         }></Route>
       </Route>
-      <Route path='/community' element={<Community/>}>
+      <Route path='/community' element={
+      <div><Community/>
+      </div>}>
         <Route path='info' element={ 
-        <div >
-            <h3 className='mb-5 fw-bold'>공지사항</h3>
+        <div className=''>
+            <h3 className='mb-5 fw-bold'> <span className='info-pen'>공지사항</span></h3>
             <div className='container'>
               <div className=''>
                 <Table title={'[공지] '}></Table>
@@ -567,7 +646,7 @@ function App() {
           </div> }/>
         <Route path='event' element={
           <div>
-            <h3 className='mb-5 fw-bold'>이벤트</h3>
+            <h3 className='mb-5 fw-bold'> <span className='info-pen'>이벤트</span> </h3>
             <div>
             <Table title={'[이벤트] '}></Table> 
             </div>

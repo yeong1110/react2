@@ -16,17 +16,30 @@ ul,li,ol,dl{
   position: relative;
 }
 
-.pen::before{
+.pen::before,
+.info-pen::before{
   content: " ";
   display: block;
   position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  inset: 0 0 0 0;
+  right: 0; bottom: 0; left: 0;
   background: #fcd055;
   z-index: -1;
   transition: transform .3s ease;
   transform: scaleX(0);
   transform-origin: bottom right;
+  height: 43%;
+}
+
+@keyframes pen {
+  100%{transform: scaleX(1);}
+}
+
+.info-pen{
+  position: relative;
+}
+
+.info-pen::before{
+  animation: pen 0.5s ease-in forwards;
 }
 
 .pen.active::before{
@@ -43,6 +56,7 @@ ul,li,ol,dl{
 
 .cont{
   margin-top: 110px;
+  /* height: 100vh; */
 }
 
 .item-img{
@@ -104,13 +118,22 @@ ul,li,ol,dl{
 
 .Navi.active{
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   background: #ffffffbb;
-
 }
 
 .navbar-brand{
   cursor: pointer;
+}
+
+.navi-right a:hover img{
+  animation: rotation 1s linear forwards alternate;
+}
+
+@keyframes rotation {
+  100%{transform: rotateY(360deg);}
 }
 
 .carousel{
@@ -252,10 +275,18 @@ ul,li,ol,dl{
 }
 
 .cus{
-  background: #ccc;
+  background: #fde5a5;
   height: 250px;
   border-radius: 20px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.jump{
+  animation: jump 1s ease-in-out infinite alternate
+}
+
+@keyframes jump {
+  100%{transform: translateY(20%);}
 }
 
 .step::after{
@@ -384,8 +415,8 @@ ul,li,ol,dl{
 }
 
 .main-cus{
-  height: 300px;
-  background: #ee9419;
+  /* height: 300px;
+  background: #ee9419; */
 }
 
 .flow_wrap{
@@ -520,6 +551,7 @@ ul,li,ol,dl{
 
 #switch option{
   color: #6f6e6e;
+  width: 110%;
 }
 
 .prd_mount{
@@ -530,6 +562,7 @@ ul,li,ol,dl{
 
 .accordion-button:focus,
 .accordion-button:not(.collapsed){
+  font-weight: bold;
   box-shadow: none;
   color: #ee9419;
   background: #fafafa;
@@ -539,4 +572,103 @@ ul,li,ol,dl{
 .accordion-button:not(.collapsed):after{
   background: #ee9419;
   border-radius: 50%;
+}
+
+.about_bg{
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.6;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.map::before{
+  content: "";
+  display: block;
+  position: absolute;
+  background: url(/public/img/mark.svg) no-repeat;
+  width: 30px;
+  height: 30px;
+  /* background-size: 20px; */
+  top: calc(45% - 15px);
+  left: calc(50% - 15px);
+  animation: jump 1s linear infinite alternate;
+}
+
+.ti::before{
+  content: "";
+  display: block;
+  width: 5px;
+  height: 15px;
+  background: #ee9419;
+  position: relative;
+  top: 6px;
+  margin-right: 10px;
+}
+
+.cus .ti::before{
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  top: 10px;
+}
+
+.my_button {
+  margin: 10px;
+  padding: 15px 30px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: none;
+  box-shadow: 0px 0px 14px -7px #f09819;
+  background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.my_button:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.my_button:active {
+  transform: scale(0.95);
+}
+
+#pop{
+  position: fixed;
+  bottom: 10%;
+  right: 10%;
+  width: 250px;
+  height: 150px;
+  animation: tada 0.3s linear forwards;
+  border-radius: 10px;
+  border-top: 10px solid #ee9419;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+}
+
+@keyframes tada {
+  0%{transform: scale(0);}
+  100%{transform: scale(1);}
+}
+
+.pop-btn{
+  top: 0;
+  right: 0;
+  padding: 0 5px;
+  background: none;
+  border: none;
+}
+
+#pop .my_button{
+  font-size: small;
+  padding: 10px 15px;
 }
