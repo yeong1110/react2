@@ -61,6 +61,16 @@ function App() {
     }
   };
 
+  const myApi = () => {
+	setLoadBox(true);
+    axios.get('https://b71c09bc-5252-4df2-8125-4795cbeaf7d8.mock.pstmn.io/list')
+    .then((result)=>{
+      const product = result.data
+      setItems(product)
+      setLoadBox(false)
+    }).catch((error)=>{window.alert(error)})
+};
+
   useEffect(() => {
     AOS.init();
     // const timer = setInterval(() => {
@@ -74,7 +84,7 @@ function App() {
     window.addEventListener("scroll", handleScroll);
   });
   useEffect(()=>{
-    setLoadBox(false);
+    myApi();
   },[])
 
   // axios.get('http://localhost:3002/post')
@@ -88,7 +98,7 @@ function App() {
   
   return (
     <div className="App">
-      {loadBox == true? <div id='load'>Loading</div> : null }
+      {loadBox == true? <div id='load' className='d-flex align-items-center justify-content-center'><span class="loader d-block"></span></div> : null }
       
             <Navbar variant="tabs"  className='Navi' ref={targetRef}>
 
@@ -477,7 +487,7 @@ function App() {
           <div className='map position-relative overflow-hidden'>
             <img src="https://map2.daum.net/map/mapservice?FORMAT=PNG&SCALE=2.5&MX=451100&MY=1161030&S=0&IW=504&IH=310&LANG=0&COORDSTM=WCONGNAMUL&logo=kakao_logo" alt="" />
           </div>
-          <div className='text-start pt-4'>
+          <div className='text-start p-5'>
             <p className='ti d-flex fw-bold'>주소</p>
             <p>경기도 고양시 일산동구 하늘마을로 158  대방 트리플라온 B동 306호 레오폴드(주)</p>
             <p className='ti d-flex fw-bold'>연락처</p>
